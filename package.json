@@ -1,0 +1,16 @@
+{
+  "name": "typescript-snippet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:EdWIN1021/typescript-snippet.git",
+  "author": "Edwin Shi <edwinshi1021@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.ts"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
