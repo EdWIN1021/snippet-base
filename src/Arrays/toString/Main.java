@@ -1,4 +1,4 @@
-package toString;
+package Arrays.toString;
 
 import java.util.Arrays;
 
