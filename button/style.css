@@ -1,0 +1,12 @@
+button:disabled {
+	background-color: orangered;
+	cursor: not-allowed;
+}
+
+button:focus {
+	outline: none;
+}
+
+button:active {
+  background-color: blue;
+}
