@@ -1,9 +1,14 @@
 package classes.constructor_chaining;
 
 public class Person {
+
     private String firstName;
+
     private String lastName;
 
+    public Person(String firstName){
+        this(firstName, "Shi");
+    }
 
     public Person() {
         this("foo", "bar");
