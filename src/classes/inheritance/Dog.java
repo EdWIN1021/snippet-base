@@ -38,7 +38,7 @@ public class Dog extends Animal{
     @Override
     public void makeNoise() {
         if(type == "Wolf") {
-            System.out.println("Ow Wooooo! ");
+            System.out.print("Ow Wooooo! ");
         }
 
         bark();
@@ -49,11 +49,11 @@ public class Dog extends Animal{
     }
 
     private void run(){
-        System.out.println("Dog Running ");
+        System.out.print("Dog Running, ");
     }
 
     private void walk(){
-        System.out.println("Dog Walking ");
+        System.out.print("Dog Walking, ");
     }
 
     private void wagTail(){
