@@ -9,7 +9,7 @@ type myNumbers interface {
 type myAlias int
 
 // type constraint
-func addT[ T myNumbers](a, b T) T {
+func addT[T myNumbers](a, b T) T {
 	return a + b
 }
 
@@ -18,4 +18,3 @@ func main() {
 
 	fmt.Println(addT(n, 100))
 }
-

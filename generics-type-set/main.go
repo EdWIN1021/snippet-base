@@ -7,7 +7,7 @@ type myNumbers interface {
 }
 
 // type constraint
-func addT[ T myNumbers](a, b T) T {
+func addT[T myNumbers](a, b T) T {
 	return a + b
 }
 
