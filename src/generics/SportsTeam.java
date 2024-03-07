@@ -3,10 +3,10 @@ package generics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballTeam {
+public class SportsTeam {
     private String teamName;
 
-    private List<BaseballPlayer> teamMembers = new ArrayList<>();
+    private List<Player> teamMembers = new ArrayList<>();
 
     private int totalWins = 0;
 
@@ -14,11 +14,11 @@ public class BaseballTeam {
 
     private int totalTies = 0;
 
-    public BaseballTeam(String teamName) {
+    public SportsTeam(String teamName) {
         this.teamName = teamName;
     }
 
-    public void  addTeamMember(BaseballPlayer player){
+    public void  addTeamMember(Player player){
         if(!teamMembers.contains(player)){
             teamMembers.add(player);
         }
@@ -33,12 +33,12 @@ public class BaseballTeam {
         return (totalLosses * 2) + totalTies + 1;
     }
 
-    public String setScore(int ourSoure, int theirScore){
+    public String setScore(int ourScore, int theirScore){
         String message = "lost to";
-        if(ourSoure > theirScore){
+        if(ourScore > theirScore){
             totalWins ++;
             message = "beat";
-        } else if (ourSoure == theirScore){
+        } else if (ourScore == theirScore){
             totalTies ++;
         } else {
             totalLosses++;
