@@ -3,7 +3,7 @@ package generics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team<T extends Player> {
+public class Team<T extends Player, S> {
     private String teamName;
 
     private List<T> teamMembers = new ArrayList<>();
@@ -14,8 +14,15 @@ public class Team<T extends Player> {
 
     private int totalTies = 0;
 
+    private S affiliation;
+
     public Team(String teamName) {
         this.teamName = teamName;
+    }
+
+    public Team(String teamName, S affiliation) {
+        this.teamName = teamName;
+        this.affiliation = affiliation;
     }
 
     public void  addTeamMember(T t){
@@ -25,7 +32,9 @@ public class Team<T extends Player> {
     }
 
     public void  listTeamMembers(){
-        System.out.println(teamName + " Roster:");
+        System.out.print(teamName + " Roster:");
+        System.out.println(affiliation == null ? "" : " AFFILIATION: " + affiliation);
+
         for(T t : teamMembers){
             System.out.println(t.name());
         }

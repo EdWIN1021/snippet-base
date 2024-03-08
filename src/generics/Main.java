@@ -3,42 +3,38 @@ package generics;
 public class Main {
 
     public static void main(String[] args) {
-        BaseballTeam phillies1 = new BaseballTeam("Philadelphia Phillies");
-        BaseballTeam astros1 = new BaseballTeam("Houston Astros");
-        scoreResult(phillies1, 3, astros1, 5);
 
-        SportsTeam phillies2 = new SportsTeam("Philadelphia Phillies");
-        SportsTeam astros2 = new SportsTeam("Houston Astros");
-        scoreResult(phillies2, 3, astros2, 5);
+        var philly = new Affiliation("city", "Philadelphia, PA", "US");
 
+        Team<BaseballPlayer, Affiliation> phillies = new Team<>("Philadelphia Phillies", philly);
+        Team<BaseballPlayer, Affiliation> astros = new Team<>("Houston Astros");
 
-        Team<BaseballPlayer> phillies = new Team<>("Philadelphia Phillies");
-        Team<BaseballPlayer> astros = new Team<>("Houston Astros");
-        scoreResult(phillies, 3, astros, 5);
-
-
-        var harper = new BaseballPlayer("B Harper", "Right Fielder");
-        var marsh = new BaseballPlayer("B Marsh", "Right Fielder");
-        var guthrie = new BaseballPlayer("D Guthrie","Center Fielder");
-
-        phillies.addTeamMember(harper);
-        phillies.addTeamMember(marsh);
-        phillies.addTeamMember(guthrie);
+        phillies.addTeamMember(new BaseballPlayer("B Harper", "Right Fielder"));
+        phillies.addTeamMember(new BaseballPlayer("B Marsh", "Right Fielder"));
+        phillies.addTeamMember(new BaseballPlayer("D Guthrie","Center Fielder"));
 
         phillies.listTeamMembers();
+        scoreResult(phillies, 3, astros, 5);
 
+        System.out.println();
 
-        SportsTeam afc1 = new SportsTeam("Adelaide Crows");
-        Team<FootballPlayer> afc = new Team<>("Adelaide Crows");
-        var tex = new FootballPlayer("Tex Walker", "Centre half forward");
-        var rory = new FootballPlayer("Rory Laird", "Midfield");
-
-        afc.addTeamMember(rory);
-        afc.addTeamMember(tex);
-
+        Team<FootballPlayer, Affiliation> afc = new Team<>("Adelaide Crows");
+        afc.addTeamMember(new FootballPlayer("Tex Walker", "Centre half forward"));
+        afc.addTeamMember(new FootballPlayer("Rory Laird", "Midfield"));
         afc.listTeamMembers();
 
+        System.out.println();
 
+
+        Team<VolleyballPlayer, Affiliation> adelaide = new Team<>("Adelaide Storm");
+        adelaide.addTeamMember(new VolleyballPlayer("N Roberts", "Setter"));
+        adelaide.listTeamMembers();
+
+        Team<VolleyballPlayer, Affiliation> canberra = new Team<>("Canberra Heat");
+        canberra.addTeamMember(new VolleyballPlayer("B Block", "Opposite"));
+        canberra.listTeamMembers();
+
+        scoreResult(canberra, 0, adelaide, 1);
     }
 
     public static void scoreResult(BaseballTeam team1, int t1_score, BaseballTeam team2, int t2_score){
