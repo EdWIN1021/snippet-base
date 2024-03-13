@@ -12,6 +12,7 @@ public class Employee {
             this("name");
         }
 
+
         public EmployeeComparator(String sortType){
             this.sortType = sortType;
         }
@@ -32,6 +33,10 @@ public class Employee {
     private String name;
 
     private int yearStarted;
+
+    public Employee(){
+
+    }
 
     public Employee(int employeeId, String name, int yearStarted) {
         this.employeeId = employeeId;
