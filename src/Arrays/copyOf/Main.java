@@ -1,4 +1,4 @@
-package arrays.copyOf;
+package Arrays.copyOf;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package arrays.deepToString;
+package Arrays.deepToString;
 
 import java.util.Arrays;
 

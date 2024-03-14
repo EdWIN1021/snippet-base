@@ -1,4 +1,4 @@
-package arrays.length;
+package Arrays.length;
 
 public class Main {
     public static void main(String[] args) {

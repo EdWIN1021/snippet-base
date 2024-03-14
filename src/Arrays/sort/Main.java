@@ -1,10 +1,11 @@
-package arrays.toString;
+package Arrays.sort;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int [] arr = { 1, 2, 3, 4, 5 };
+        int [] arr = { 3, 2, 4, 1, 5};
+        Arrays.sort(arr);
 
         System.out.println(Arrays.toString(arr));
     }

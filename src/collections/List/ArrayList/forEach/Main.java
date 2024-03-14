@@ -1,4 +1,4 @@
-package collections.List.ArrayList.foreach;
+package collections.List.ArrayList.forEach;
 
 import java.util.ArrayList;
 import java.util.List;

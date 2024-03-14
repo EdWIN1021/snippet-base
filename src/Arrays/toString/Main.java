@@ -1,12 +1,11 @@
-package arrays.fill;
+package Arrays.toString;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int [] arr = new int [10];
+        int [] arr = { 1, 2, 3, 4, 5 };
 
-        Arrays.fill(arr, 2);
         System.out.println(Arrays.toString(arr));
     }
 }

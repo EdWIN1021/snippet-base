@@ -1,4 +1,4 @@
-package arrays.equals;
+package Arrays.equals;
 
 import java.util.Arrays;
 
