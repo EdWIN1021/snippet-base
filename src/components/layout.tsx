@@ -5,17 +5,16 @@ import {
 } from "@/components/ui/resizable";
 
 import "@blocknote/core/fonts/inter.css";
-import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteView } from "@blocknote/shadcn";
 import "@blocknote/shadcn/style.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SideBar from "./side-bar";
+import CustomBlockNoteViews from "./custom-block-note-view";
 
 export default function Layout() {
-  const editor = useCreateBlockNote();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -39,9 +38,7 @@ export default function Layout() {
   return (
     <ResizablePanelGroup direction="horizontal" className="min-h-[100vh]">
       <ResizablePanel defaultSize={20}>
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">Sidebar</span>
-        </div>
+        <SideBar />
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={80}>
@@ -51,18 +48,13 @@ export default function Layout() {
           </div>
         ) : (
           <>
-            <BlockNoteView
-              editor={editor}
-              shadCNComponents={
-                {
-                  // Pass modified ShadCN components from your project here.
-                  // Otherwise, the default ShadCN components will be used.
-                }
-              }
-            />
-            <SyntaxHighlighter language="go" style={docco}>
-              {data ? atob(data) : "No content available"}
-            </SyntaxHighlighter>
+            <CustomBlockNoteViews />
+
+            <div className="m-10">
+              <SyntaxHighlighter language="go" style={atomOneDark}>
+                {data ? atob(data) : "No content available"}
+              </SyntaxHighlighter>
+            </div>
           </>
         )}
       </ResizablePanel>
