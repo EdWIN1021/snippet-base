@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { CaretRightIcon } from "@radix-ui/react-icons";
 
 const SideBar = () => {
   const [branches, setBranches] = useState([]);
@@ -10,7 +11,7 @@ const SideBar = () => {
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
-      setError(null); // Reset error state before fetch
+      setError(null);
       try {
         const res = await axios.get(
           "https://api.github.com/repos/EdWIN1021/programming-languages/branches"
@@ -31,14 +32,17 @@ const SideBar = () => {
   if (error) return <div>{error}</div>; // Error state
 
   return (
-    <div className="">
+    <div className="p-2">
       {branches.map((branch) => (
         <Button
           key={branch?.name}
           variant={"ghost"}
           className="block w-full text-left"
         >
-          {branch?.name}
+          <div className="flex items-center gap-2">
+            <CaretRightIcon />
+            {branch?.name}
+          </div>
         </Button>
       ))}
     </div>
