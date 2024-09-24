@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { CaretRightIcon } from "@radix-ui/react-icons";
+import { CaretRightIcon } from "@radix-ui/react-icons";
 
 import {
   NavigationMenu,
@@ -9,13 +9,15 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const SideBar = () => {
   const [branches, setBranches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -41,42 +43,33 @@ const SideBar = () => {
   if (error) return <div>{error}</div>; // Error state
 
   return (
-    // <NavigationMenu>
-    //   <NavigationMenuList>
-    //     {branches.map((branch) => (
-    //       <NavigationMenuItem key={branch?.name}>
-    //         <Link to={`/notes/${branch.name}`}>
-    //           <NavigationMenuLink
-    //             className={navigationMenuTriggerStyle()}
-    //             active={params.noteId === branch.name}
-    //           >
-    //             {branch?.name}
-    //           </NavigationMenuLink>
-    //         </Link>
-    //       </NavigationMenuItem>
-    //     ))}
-    //   </NavigationMenuList>
-    // </NavigationMenu>
+    <>
+      <NavigationMenu>
+        <NavigationMenuList>
+          {branches.map((branch) => (
+            <NavigationMenuItem key={branch?.name}>
+              <Button
+                className="w-full justify-start"
+                variant={"ghost"}
+                onClick={(e) => {
+                  navigate(`/notes/${branch.name}`);
+                }}
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <CaretRightIcon className="h-3 w-3" />
+                </Button>
 
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link to="/docs">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <Link to="/docs">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+                {branch?.name}
+              </Button>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </>
   );
 };
 
