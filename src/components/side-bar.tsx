@@ -1,18 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
-import { CaretRightIcon } from "@radix-ui/react-icons";
+// import { CaretRightIcon } from "@radix-ui/react-icons";
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { Link, useParams } from "react-router-dom";
 
@@ -46,20 +41,40 @@ const SideBar = () => {
   if (error) return <div>{error}</div>; // Error state
 
   return (
+    // <NavigationMenu>
+    //   <NavigationMenuList>
+    //     {branches.map((branch) => (
+    //       <NavigationMenuItem key={branch?.name}>
+    //         <Link to={`/notes/${branch.name}`}>
+    //           <NavigationMenuLink
+    //             className={navigationMenuTriggerStyle()}
+    //             active={params.noteId === branch.name}
+    //           >
+    //             {branch?.name}
+    //           </NavigationMenuLink>
+    //         </Link>
+    //       </NavigationMenuItem>
+    //     ))}
+    //   </NavigationMenuList>
+    // </NavigationMenu>
+
     <NavigationMenu>
-      <NavigationMenuList className="flex flex-col items-start">
-        {branches.map((branch) => (
-          <NavigationMenuItem key={branch?.name}>
-            <Link to={`/notes/${branch.name}`}>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                active={params.noteId === branch.name}
-              >
-                {branch?.name}
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        ))}
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link to="/docs">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link to="/docs">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
