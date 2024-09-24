@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   ReactFlow,
@@ -22,12 +22,15 @@ const Note = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const params = useParams();
 
+  useEffect(() => {
+    return () => console.log("destroy");
+  }, [params.noteId]);
+
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
 
-  console.log(initialNodes);
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <div>{params.noteId}</div>
