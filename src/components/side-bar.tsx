@@ -3,10 +3,24 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { CaretRightIcon } from "@radix-ui/react-icons";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { Link, useParams } from "react-router-dom";
+
 const SideBar = () => {
   const [branches, setBranches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const params = useParams();
 
   useEffect(() => {
     const getData = async () => {
@@ -32,20 +46,22 @@ const SideBar = () => {
   if (error) return <div>{error}</div>; // Error state
 
   return (
-    <div className="p-2">
-      {branches.map((branch) => (
-        <Button
-          key={branch?.name}
-          variant={"ghost"}
-          className="block w-full text-left"
-        >
-          <div className="flex items-center gap-2">
-            <CaretRightIcon />
-            {branch?.name}
-          </div>
-        </Button>
-      ))}
-    </div>
+    <NavigationMenu>
+      <NavigationMenuList className="flex flex-col items-start">
+        {branches.map((branch) => (
+          <NavigationMenuItem key={branch?.name}>
+            <Link to={`/notes/${branch.name}`}>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                active={params.noteId === branch.name}
+              >
+                {branch?.name}
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 

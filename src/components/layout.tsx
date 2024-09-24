@@ -25,6 +25,7 @@ import {
 
 import "@xyflow/react/dist/style.css";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
 
@@ -94,6 +95,7 @@ export default function Layout() {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={80}>
+        <Outlet />
         {/* {loading ? (
           <div className="flex h-full items-center justify-center">
             <span>Loading...</span>
@@ -110,7 +112,7 @@ export default function Layout() {
           </>
         )} */}
 
-        <ReactFlow
+        {/* <ReactFlow
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}
@@ -120,11 +122,7 @@ export default function Layout() {
           <Controls />
           <MiniMap />
           <Background variant="dots" gap={12} size={1} />
-        </ReactFlow>
-
-        <SyntaxHighlighter language="go" style={atomOneDark}>
-          {data ? atob(data) : "No content available"}
-        </SyntaxHighlighter>
+        </ReactFlow> */}
       </ResizablePanel>
     </ResizablePanelGroup>
   );
