@@ -8,7 +8,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 
@@ -42,13 +41,6 @@ const CreateDropdown: React.FC<CreateDropdownProps> = ({
     const newPageId = Date.now();
     setPages((prev) => [...prev, { id: newPageId, title: "new page" }]);
     router.push(`/pages/${newPageId}`);
-
-
-
-
-
-
-    
   };
 
   const handleWhiteboard = () => {
