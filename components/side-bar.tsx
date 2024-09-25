@@ -23,9 +23,11 @@ const Sidebar = () => {
   ]);
 
   return (
-    <div>
+    <div className="p-5">
       <CreateDropdown setPages={setPages} setWhiteboards={setWhiteboards} />
       <NavigationMenu>
+        <p className="text-sm text-muted-foreground my-3">Pages</p>
+
         <NavigationMenuList>
           {pages?.map((page) => (
             <NavigationMenuItem key={page?.id}>
@@ -38,6 +40,8 @@ const Sidebar = () => {
             </NavigationMenuItem>
           ))}
         </NavigationMenuList>
+
+        <p className="text-sm text-muted-foreground my-3">Whiteboards</p>
 
         <NavigationMenuList>
           {whiteboards?.map((whiteboard) => (

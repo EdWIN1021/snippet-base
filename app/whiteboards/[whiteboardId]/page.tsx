@@ -1,3 +1,5 @@
+import Flow from "@/components/Flow";
+
 export default function Whiteboard() {
-  return <div>here</div>;
+  return <Flow />;
 }
