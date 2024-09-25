@@ -6,6 +6,7 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { Block } from "@blocknote/core";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Editor() {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -33,11 +34,17 @@ export default function Editor() {
   console.log(JSON.stringify(blocks, null, 2));
 
   return (
-    <BlockNoteView
-      editor={editor}
-      onChange={() => {
-        setBlocks(editor.document);
-      }}
-    />
+    <div className="p-10">
+      <Textarea
+        className="text-5xl border-0 outline-none px-12"
+        placeholder="New Page"
+      />
+      <BlockNoteView
+        editor={editor}
+        onChange={() => {
+          setBlocks(editor.document);
+        }}
+      />
+    </div>
   );
 }
