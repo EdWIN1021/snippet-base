@@ -42,6 +42,13 @@ const CreateDropdown: React.FC<CreateDropdownProps> = ({
     const newPageId = Date.now();
     setPages((prev) => [...prev, { id: newPageId, title: "new page" }]);
     router.push(`/pages/${newPageId}`);
+
+
+
+
+
+
+    
   };
 
   const handleWhiteboard = () => {
