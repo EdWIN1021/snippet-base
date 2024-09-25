@@ -25,6 +25,11 @@ const Sidebar = () => {
   return (
     <div className="p-5">
       <CreateDropdown setPages={setPages} setWhiteboards={setWhiteboards} />
+
+      <Link className={navigationMenuTriggerStyle()} href={`/`}>
+        Home
+      </Link>
+
       <NavigationMenu>
         <p className="text-sm text-muted-foreground my-3">Pages</p>
 
