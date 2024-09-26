@@ -4,9 +4,17 @@ export const Editor = dynamic(() => import("@/components/editor"), {
   ssr: false,
 });
 
-export default async function Page() {
+export default async function Page({
+  params,
+}: {
+  params: { folderId: string; pageId: string };
+}) {
+  console.log(params);
+
+  const { folderId, pageId } = params;
+
   const response = await fetch(
-    "https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine/Character/Character.md",
+    `https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine/${folderId}/${pageId}`,
     {
       cache: "no-store",
       headers: {

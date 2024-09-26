@@ -1,20 +1,18 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import { CaretRightIcon } from "@radix-ui/react-icons";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import CreateDropdown from "./create-dropdown";
+import { Button } from "./ui/button";
+import { useState } from "react";
+import ListItem from "./list-item";
 
 async function fetchUser() {
   const response = await fetch(
-    "https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine",
+    "https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine/",
     {
       cache: "no-store",
       headers: {
@@ -34,14 +32,12 @@ const Sidebar = () => {
     queryFn: fetchUser,
   });
 
-  console.log(data);
-
-  const [pages, setPages] = React.useState([
+  const [, setPages] = useState([
     { id: 1, title: "Page1" },
     { id: 2, title: "Page2" },
   ]);
 
-  const [whiteboards, setWhiteboards] = React.useState([
+  const [, setWhiteboards] = useState([
     { id: 1, title: "Whiteboard1" },
     { id: 2, title: "Whiteboard2" },
   ]);
@@ -50,7 +46,7 @@ const Sidebar = () => {
   if (error) return <div>Error...</div>;
 
   return (
-    <div className="p-5 max-h-[100vh] overflow-y-scroll overflow-x-hidden">
+    <div className="p-5 max-h-[100vh] overflow-y-auto overflow-x-hidden ">
       <CreateDropdown setPages={setPages} setWhiteboards={setWhiteboards} />
 
       <Link className={navigationMenuTriggerStyle()} href={`/`}>
@@ -61,14 +57,11 @@ const Sidebar = () => {
         <p className="text-sm text-muted-foreground my-3">Pages</p>
         <ul>
           {data?.map((item) => (
-            <li key={item?.id}>
-              <Link
-                className={navigationMenuTriggerStyle()}
-                href={`/pages/${item?.id}`}
-              >
-                {item.name}
-              </Link>
-            </li>
+            <div key={item?.name}>
+              {item?.name.split(".").length < 2 && (
+                <ListItem key={item?.name} name={item?.name} />
+              )}
+            </div>
           ))}
         </ul>
       </div>
