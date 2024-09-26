@@ -10,7 +10,7 @@ export default async function Page() {
     {
       cache: "no-store",
       headers: {
-        Authorization: `token ${process.env.ACCESS_TOKEN}`,
+        Authorization: `token ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
       },
     }
   );

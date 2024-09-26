@@ -50,6 +50,7 @@ const Editor: React.FC<EditorProps> = ({ name, content }) => {
         className="text-5xl border-0 outline-none px-12"
         value={name.split(".")[0]}
         placeholder="New Page"
+        disabled
       />
       <BlockNoteView
         editor={editor}
