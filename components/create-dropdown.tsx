@@ -39,6 +39,8 @@ const CreateDropdown: React.FC<CreateDropdownProps> = ({
 
   const handleCreatePage = () => {
     const newPageId = Date.now();
+
+
     setPages((prev) => [...prev, { id: newPageId, title: "new page" }]);
     router.push(`/pages/${newPageId}`);
   };
@@ -61,10 +63,14 @@ const CreateDropdown: React.FC<CreateDropdownProps> = ({
       <DropdownMenuContent>
         <DropdownMenuLabel>Create</DropdownMenuLabel>
         <DropdownMenuSeparator />
+
+        
         <DropdownMenuItem onClick={handleCreatePage}>Page</DropdownMenuItem>
         <DropdownMenuItem onClick={handleWhiteboard}>
           Whiteboard
         </DropdownMenuItem>
+
+
       </DropdownMenuContent>
     </DropdownMenu>
   );
