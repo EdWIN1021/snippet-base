@@ -50,44 +50,28 @@ const Sidebar = () => {
   if (error) return <div>Error...</div>;
 
   return (
-    <div className="p-5">
+    <div className="p-5 max-h-[100vh] overflow-y-scroll overflow-x-hidden">
       <CreateDropdown setPages={setPages} setWhiteboards={setWhiteboards} />
 
       <Link className={navigationMenuTriggerStyle()} href={`/`}>
         Home
       </Link>
 
-      <NavigationMenu>
+      <div>
         <p className="text-sm text-muted-foreground my-3">Pages</p>
-
-        <NavigationMenuList>
+        <ul>
           {data?.map((item) => (
-            <NavigationMenuItem key={item?.id}>
+            <li key={item?.id}>
               <Link
                 className={navigationMenuTriggerStyle()}
                 href={`/pages/${item?.id}`}
               >
                 {item.name}
               </Link>
-            </NavigationMenuItem>
+            </li>
           ))}
-        </NavigationMenuList>
-
-        <p className="text-sm text-muted-foreground my-3">Whiteboards</p>
-
-        <NavigationMenuList>
-          {whiteboards?.map((whiteboard) => (
-            <NavigationMenuItem key={whiteboard?.id}>
-              <Link
-                className={navigationMenuTriggerStyle()}
-                href={`/whiteboards/${whiteboard?.id}`}
-              >
-                {whiteboard.title}
-              </Link>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
+        </ul>
+      </div>
     </div>
   );
 };
