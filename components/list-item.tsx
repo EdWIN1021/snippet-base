@@ -7,7 +7,7 @@ import { navigationMenuTriggerStyle } from "./ui/navigation-menu";
 
 async function getList(name: string) {
   const response = await fetch(
-    `https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine/${name}`,
+    `https://api.github.com/repos/edwin1021/notes/contents/${name}?ref=unreal-engine`,
     {
       cache: "no-store",
       headers: {

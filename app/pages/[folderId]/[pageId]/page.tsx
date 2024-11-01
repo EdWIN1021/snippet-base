@@ -1,3 +1,4 @@
+import Note from "@/components/note";
 import dynamic from "next/dynamic";
 
 export const Editor = dynamic(() => import("@/components/editor"), {
@@ -9,12 +10,10 @@ export default async function Page({
 }: {
   params: { folderId: string; pageId: string };
 }) {
-  console.log(params);
-
   const { folderId, pageId } = params;
 
   const response = await fetch(
-    `https://api.github.com/repos/EdWIN1021/notes/contents/unreal-engine/${folderId}/${pageId}`,
+    `https://api.github.com/repos/edwin1021/notes/contents/${folderId}/${pageId}?ref=unreal-engine`,
     {
       cache: "no-store",
       headers: {
@@ -25,5 +24,7 @@ export default async function Page({
 
   const data = await response.json();
 
-  return <Editor content={data?.content} name={data?.name} />;
+  console.log(atob(data.content));
+
+  return <Note content={atob(data.content)} />;
 }
